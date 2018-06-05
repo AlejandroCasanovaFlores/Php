@@ -55,7 +55,7 @@ $objetoHTML = new Html();
 
 $js = '<script>alert("Hola desde Alert");</script>';
 
-$objetoHTML->cabeza('Modificador éxitoso!');
+$objetoHTML->cabeza('Modificador éxitoso!', $js);
 $objetoHTML->abrirCuerpo();
 
 $arr = array($persona1, $persona2, $persona3, $persona4, $persona5);
