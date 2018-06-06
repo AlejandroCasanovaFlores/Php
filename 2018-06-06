@@ -1,0 +1,100 @@
+<?php
+
+class ClasePadre
+{
+  public function MetodoDelPadre()
+  {
+    echo 'Método desde el padre.<br>';
+  }
+}
+
+class ClaseHijo extends ClasePadre
+{
+  //En esta clase el metodo MetodoDelPadre se sobre escribe para claseHijo.
+  public function MetodoDelPadre()
+  {
+    echo 'Metodo desde el hijo.<br>';
+  }
+  
+  public function OtroMetodo()
+  {
+    //Llamamos al metodo de la clase padre
+    Parent::MetodoDelPadre();
+  }
+}
+
+$hijo = new ClaseHijo();
+$hijo->MetodoDelPadre();
+$hijo->OtroMetodo();
+
+class OtraClase
+{
+  public static function MetodoSinObjeto()
+  {
+    echo 'Hola, el metodo estatico MetodoSinObjeto esta aquí.<br>';
+  }
+}
+
+OtraClase::MetodoSinObjeto();
+
+class Aritmetica
+{
+  public static function suma(...$params)
+  {
+    if(count($params) == 0 || count($params) > 5)
+      return;
+    
+    $resultado = 0;
+    
+    foreach($params as $indice => $valor)
+    {
+      $resultado += $valor;
+    }
+    return $resultado;
+  }
+  
+  public static function resta(...$params)
+  {
+    if(count($params) == 0 || count($params) > 5)
+      return;
+    
+    $resultado;
+    
+    foreach($params as $indice => $valor)
+    {  
+      if(gettype($valor) == 'integer')
+      {
+        if($indice == 0)
+          $resultado = $valor;
+        else
+          $resultado -= $valor;
+      }
+        
+    }
+    
+    return $resultado;
+  }
+  
+  public static function dividir(...$params)
+  {
+    if(count($params) == 0 || count($params) > 5)
+      return;
+    
+    $resultado;
+    
+    foreach($params as $indice => $valor)
+    {
+      if($indice == 0)
+        $resultado = $valor;
+      else
+        $resultado /= $valor;
+    }
+    
+    return $resultado;
+  }
+}
+
+echo Aritmetica::suma(45, 87, 78).'<br>';
+echo Aritmetica::resta(48,57,74,'a', true).'<br>';
+echo Aritmetica::dividir(100, 2, 5, 5, 2).'<br>';
+
