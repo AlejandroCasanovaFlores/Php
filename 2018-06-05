@@ -1,0 +1,48 @@
+<?php
+//Autor: Alejandro Casanova
+//Fecha: 05 de junio de 2018
+
+class SerVivo
+{
+  public function Respirar()
+  {
+    echo 'Estoy respirando<br>';
+    $this->MiMetodo();
+  }
+  
+  public function Caminar()
+  {
+    echo 'Estoy caminando<br>';
+  }
+  
+  //Lo podemos llamar solo desde la clase ya que es private.
+  private function MiMetodo()
+  {
+    echo 'Soy un método privado<br>';
+  }
+  
+  //Los metodos protegidos solo se ejecutan desde la clase o desde clase heredadas.
+  protected function MetodoProtegido()
+  {
+    echo 'Soy un metodo protegido<br>';
+    $this->MiMetodo();
+  }
+}
+
+class SerHumano extends SerVivo
+{
+  public function Razonar()
+  {
+    echo 'Yo razona muajajajjaa<br>';
+    Parent::MetodoProtegido();
+  }
+}
+
+$serVivo = new SerVivo();
+$serVivo->Caminar();
+$serVivo->Respirar();
+
+$serHumano = new SerHumano();
+$serHumano->Razonar();
+$serHumano->Respirar();
+$serHumano->Caminar();
